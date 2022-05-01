@@ -1,35 +1,37 @@
 import os
 import time
-import pyfiglet
+from function import banner
 
-banner = pyfiglet.figlet_format("WireAttack")
-
+banner = banner()
 enter = "\n"
 
 print("""{0}
-            *** The Tool Was Created By Idan Malihi ***{1}""".format(banner,enter))
+            *** The Script Was Created By Idan Malihi ***{1}""".format(banner,enter))
 
 print("Set up the adapter{0}".format(enter))
 
-try:
-    adapter = input("Enter your adapter's name > ")
-    print("{0}Checking if there are any problematic PPID........................... (Press Enter){0}".format(enter))
-
-    os.system("kill all")
-    print("All PPID have been deleted.{0}".format(enter))
-    
-    print("Let's Enable Monitor Mode!{0}".format(enter))
-    os.system("ifconfig {0} down && iwconfig {0} mode monitor && ifconfig {0} up".format(adapter))
-    print("Mode Monitor in {0} has changed successfully!{1}".format(adapter, enter))
-
-    print("Press CTRL + C When you Finish the SCAN! *IMPORTANT* ")
-
-    time.sleep(5)
-
-    os.system("airodump-ng {0}".format(adapter))
-
-except:
+adapter = input("Enter your adapter's name > ")
+if adapter == False or adapter == None:
     print("Your adapter's name does not exist, please check with 'iwconfig' command.")
+else:
+    pass
+
+print("{0}Checking if there are any problematic PPID........................... (Press Enter){0}".format(enter))
+
+os.system("kill all")
+print("All PPID have been deleted.{0}".format(enter))
+
+print("Let's Enable Monitor Mode!{0}".format(enter))
+os.system("ifconfig {0} down && iwconfig {0} mode monitor && ifconfig {0} up".format(adapter))
+print("Mode Monitor in {0} has changed successfully!{1}".format(adapter, enter))
+
+print("Press CTRL + C When you Finish the SCAN! *IMPORTANT* ")
+
+time.sleep(5)
+
+os.system("airodump-ng {0}".format(adapter))
+
+print("Your adapter's name does not exist, please check with 'iwconfig' command.")
 
 bssid_name = input("Enter BSSID Name > ")
 channel = input("{0}Enter channel > ".format(enter))
