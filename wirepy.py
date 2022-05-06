@@ -50,8 +50,8 @@ def menu():
         adapter = input("Enter your adapter's name > ")
         scan = "airodump-ng {0} -M".format(adapter)
         print("Press CTRL + C When you Finish the SCAN! *IMPORTANT* ")
-        sleep = os.system("sleep 5")
-        scan1 = os.system(scan)
+        os.system("sleep 5")
+        os.system(scan)
         bssid = str(input("\nEnter Target's BSSID > "))
         channel = int(input("\nEnter Network's Channel > "))
         path = str(input("\nEnter Network's Channel > "))
@@ -61,10 +61,8 @@ def menu():
         menu()
 
     elif option == 5:
-        print("Updating Kali's Repositories")
         os.system("sudo apt-get update")
 
-        print("\nUpgrade Kali Linux")
         os.system("sudo apt-get full-upgrade -y")
         menu()
 
@@ -116,23 +114,18 @@ def menu():
             tools()
 
     elif option == 0:
+        os.system("clear")
         print("""
-        Hi,
-        My name is Idan and I am an Ethical Hacker, Programmer and Bug Bounty Hunter.
-        Today I am working as a bug bounty hacker in some platforms like HackerOne, BugCrowd, etc.
-        
-        For more information about myself, you can enter to my LinkedIn Profile:
-        https://www.linkedin.com/in/idan-malihi-b993611aa/
-        
-        Or you can reach me on Telegram:
-        @TraiLeR30
+ Hi,
+My name is Idan and I am an Ethical Hacker, Programmer and Bug Bounty Hunter.
+Today I am working as a bug bounty hacker in some platforms like HackerOne, BugCrowd, etc.
+
+For more information about myself, you can enter to my LinkedIn Profile:
+https://www.linkedin.com/in/idan-malihi-b993611aa/
+
+Or you can reach me on Telegram:
+@TraiLeR30
         """)
-        quit()
-
-
-
-
-
 
 
 menu()
