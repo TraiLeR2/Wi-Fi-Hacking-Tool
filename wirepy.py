@@ -67,20 +67,19 @@ def menu():
         menu()
 
     elif option == 6:
-        def tools():
-            os.system("clear")
-            print("""
-            1) Aircrack-ng
-            2) Wifite
-            3) Kismet
-            4) Wifiphisher
-            5) inSSIDer
-            6) Wireshark
-            7) Airgeddon
-            8) Wifi Honey
-            9) Install ALL""")
+        os.system("clear")
+        print("""
+        1) Aircrack-ng
+        2) Wifite
+        3) Kismet
+        4) Wifiphisher
+        5) inSSIDer
+        6) Wireshark
+        7) Airgeddon
+        8) Wifi Honey
+        9) Install ALL""")
 
-            tool = int(input("Enter the number of the tool > "))
+        tool = int(input("Enter the number of the tool > "))
             if tool == 1:
                 os.system("sudo apt-get update && sudo apt-get install aircrack-ng -y")
 
