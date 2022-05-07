@@ -28,15 +28,15 @@ def menu():
 
     elif option == 0:
         print("""
-        Hi, my name is Idan (TraiLeR) and I am an Ethical Hacker, Bug Bounty Hunter and Cyber Security Researcher.
-        Since I was a child I loved challenges and do things that would open my mind and be more creative.
-        Feel free to reach me on LinkedIn:
-        https://www.linkedin.com/in/idan-malihi-b993611aa/
-        
-        OR
-        
-        Feel free to reach me on Telegram:
-        @TraiLeR30
+Hi, my name is Idan (TraiLeR) and I am an Ethical Hacker, Bug Bounty Hunter and Cyber Security Researcher.
+Since I was a child I loved challenges and do things that would open my mind and be more creative.
+Feel free to reach me on LinkedIn:
+https://www.linkedin.com/in/idan-malihi-b993611aa/
+
+OR
+
+Feel free to reach me on Telegram:
+@TraiLeR30
         """)
 
     elif option == 1:
@@ -82,15 +82,16 @@ def menu():
     elif option == 6:
         os.system("clear")
         print("""
-        1) Aircrack-ng
-        2) Wifite
-        3) Kismet
-        4) Wifiphisher
-        5) inSSIDer
-        6) Wireshark
-        7) Airgeddon
-        8) Wifi Honey
-        9) Install ALL""")
+1) Aircrack-ng
+2) Wifite
+3) Kismet
+4) Wifiphisher
+5) inSSIDer
+6) Wireshark
+7) Airgeddon
+8) Wifi Honey
+9) Install ALL
+            """)
 
         tool = int(input("Enter the number of the tool > "))
 
