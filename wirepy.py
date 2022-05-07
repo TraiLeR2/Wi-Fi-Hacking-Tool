@@ -44,16 +44,16 @@ def menu():
         adapter = input("Enter your adapter's name > ")
         scan = "airodump-ng {0} -M".format(adapter)
         print("Press CTRL + C When you Finish the SCAN! *IMPORTANT* ")
-        sleep = os.system("sleep 3")
+        time.sleep(5)
         scan1 = os.system(scan)
-        sleep = os.system("sleep 5")
+        time.sleep(5)
         menu()
 
     elif option == 4:
         adapter = input("Enter your adapter's name > ")
         scan = "airodump-ng {0} -M".format(adapter)
         print("Press CTRL + C When you Finish the SCAN! *IMPORTANT* ")
-        os.system("sleep 5")
+        time.sleep(5)
         os.system(scan)
         bssid = str(input("\nEnter Target's BSSID > "))
         channel = int(input("\nEnter Network's Channel > "))
@@ -84,35 +84,37 @@ def menu():
 
         tool = int(input("Enter the number of the tool > "))
         
-        if tool == 1:
-            os.system("sudo apt-get update && sudo apt-get install aircrack-ng -y")
-
-        elif tool == 2:
-            os.system("sudo apt-get update && sudo apt-get install wifite -y")
-
-        elif tool == 3:
-            os.system("sudo apt-get update && sudo apt-get install kismet -y")
-
-        elif tool == 4:
-            os.system("sudo apt-get update && sudo apt-get install wifiphisher -y")
-
-        elif tool == 5:
-            os.system("sudo apt-get update && sudo apt-get install linssid -y")
-
-        elif tool == 6:
-            os.system("sudo apt-get update && sudo apt-get install wireshark -y")
-
-        elif tool == 7:
-            os.system("sudo apt-get update && sudo apt-get install airgeddon -y")
-
-        elif tool == 8:
-            os.system("sudo apt-get update && sudo apt-get install wifitap")
-
-        elif tool == 9:
-            os.system("sudo apt-get update && sudo apt-get install -y aircrack-ng wifite kismet wifiphisher linssid wireshark airgeddon wifitap")
+        try:
+            if tool == 1:
+                os.system("sudo apt-get update && sudo apt-get install aircrack-ng -y")
+    
+            elif tool == 2:
+                os.system("sudo apt-get update && sudo apt-get install wifite -y")
+    
+            elif tool == 3:
+                os.system("sudo apt-get update && sudo apt-get install kismet -y")
+    
+            elif tool == 4:
+                os.system("sudo apt-get update && sudo apt-get install wifiphisher -y")
+    
+            elif tool == 5:
+                os.system("sudo apt-get update && sudo apt-get install linssid -y")
+    
+            elif tool == 6:
+                os.system("sudo apt-get update && sudo apt-get install wireshark -y")
+    
+            elif tool == 7:
+                os.system("sudo apt-get update && sudo apt-get install airgeddon -y")
+    
+            elif tool == 8:
+                os.system("sudo apt-get update && sudo apt-get install wifitap")
+    
+            elif tool == 9:
+                os.system("sudo apt-get update && sudo apt-get install -y aircrack-ng wifite kismet wifiphisher linssid wireshark airgeddon wifitap")
             
-        else:
+        except:
             print("You did not type the right number on the list!")
+            
 
 
 menu()
