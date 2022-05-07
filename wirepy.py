@@ -25,9 +25,19 @@ def menu():
 
     if option == 00:
         exit()
-        
+
     elif option == 0:
-        os.system("clear")
+        print("""
+        Hi, my name is Idan (TraiLeR) and I am an Ethical Hacker, Bug Bounty Hunter and Cyber Security Researcher.
+        Since I was a child I loved challenges and do things that would open my mind and be more creative.
+        Feel free to reach me on LinkedIn:
+        https://www.linkedin.com/in/idan-malihi-b993611aa/
+        
+        OR
+        
+        Feel free to reach me on Telegram:
+        @TraiLeR30
+        """)
 
     elif option == 1:
         print("Set up the adapter{0}".format(enter))
@@ -83,38 +93,38 @@ def menu():
         9) Install ALL""")
 
         tool = int(input("Enter the number of the tool > "))
-        
+
         try:
             if tool == 1:
                 os.system("sudo apt-get update && sudo apt-get install aircrack-ng -y")
-    
+
             elif tool == 2:
                 os.system("sudo apt-get update && sudo apt-get install wifite -y")
-    
+
             elif tool == 3:
                 os.system("sudo apt-get update && sudo apt-get install kismet -y")
-    
+
             elif tool == 4:
                 os.system("sudo apt-get update && sudo apt-get install wifiphisher -y")
-    
+
             elif tool == 5:
                 os.system("sudo apt-get update && sudo apt-get install linssid -y")
-    
+
             elif tool == 6:
                 os.system("sudo apt-get update && sudo apt-get install wireshark -y")
-    
+
             elif tool == 7:
                 os.system("sudo apt-get update && sudo apt-get install airgeddon -y")
-    
+
             elif tool == 8:
                 os.system("sudo apt-get update && sudo apt-get install wifitap")
-    
+
             elif tool == 9:
                 os.system("sudo apt-get update && sudo apt-get install -y aircrack-ng wifite kismet wifiphisher linssid wireshark airgeddon wifitap")
-            
+
         except:
             print("You did not type the right number on the list!")
-            
+
 
 
 menu()
