@@ -25,6 +25,9 @@ def menu():
 
     if option == 00:
         exit()
+        
+    elif option == 0:
+        os.system("clear")
 
     elif option == 1:
         print("Set up the adapter{0}".format(enter))
@@ -80,51 +83,36 @@ def menu():
         9) Install ALL""")
 
         tool = int(input("Enter the number of the tool > "))
-            if tool == 1:
-                os.system("sudo apt-get update && sudo apt-get install aircrack-ng -y")
+        
+        if tool == 1:
+            os.system("sudo apt-get update && sudo apt-get install aircrack-ng -y")
 
-            elif tool == 2:
-                os.system("sudo apt-get update && sudo apt-get install wifite -y")
+        elif tool == 2:
+            os.system("sudo apt-get update && sudo apt-get install wifite -y")
 
-            elif tool == 3:
-                os.system("sudo apt-get update && sudo apt-get install kismet -y")
+        elif tool == 3:
+            os.system("sudo apt-get update && sudo apt-get install kismet -y")
 
-            elif tool == 4:
-                os.system("sudo apt-get update && sudo apt-get install wifiphisher -y")
+        elif tool == 4:
+            os.system("sudo apt-get update && sudo apt-get install wifiphisher -y")
 
-            elif tool == 5:
-                os.system("sudo apt-get update && sudo apt-get install linssid -y")
+        elif tool == 5:
+            os.system("sudo apt-get update && sudo apt-get install linssid -y")
 
-            elif tool == 6:
-                os.system("sudo apt-get update && sudo apt-get install wireshark -y")
+        elif tool == 6:
+            os.system("sudo apt-get update && sudo apt-get install wireshark -y")
 
-            elif tool == 7:
-                os.system("sudo apt-get update && sudo apt-get install airgeddon -y")
+        elif tool == 7:
+            os.system("sudo apt-get update && sudo apt-get install airgeddon -y")
 
-            elif tool == 8:
-                os.system("sudo apt-get update && sudo apt-get install wifitap")
+        elif tool == 8:
+            os.system("sudo apt-get update && sudo apt-get install wifitap")
 
-            elif tool == 9:
-                os.system("sudo apt-get update && sudo apt-get install -y aircrack-ng wifite kismet wifiphisher linssid wireshark airgeddon wifitap")
-
-            else:
-                print("You did not type the right number!")
-                tools()
-            tools()
-
-    elif option == 0:
-        os.system("clear")
-        print("""
- Hi,
-My name is Idan and I am an Ethical Hacker, Programmer and Bug Bounty Hunter.
-Today I am working as a bug bounty hacker in some platforms like HackerOne, BugCrowd, etc.
-
-For more information about myself, you can enter to my LinkedIn Profile:
-https://www.linkedin.com/in/idan-malihi-b993611aa/
-
-Or you can reach me on Telegram:
-@TraiLeR30
-        """)
+        elif tool == 9:
+            os.system("sudo apt-get update && sudo apt-get install -y aircrack-ng wifite kismet wifiphisher linssid wireshark airgeddon wifitap")
+            
+        else:
+            print("You did not type the right number on the list!")
 
 
 menu()
