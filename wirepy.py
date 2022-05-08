@@ -154,28 +154,46 @@ Feel free to reach me on Telegram:
         os.system("aircrack-ng {0} -w {1}".format(handshake, wordlist))
 
     elif option == 9:
-        if os.system("crunch") == "Usage":
+        pattern = str(input("Would you like to create a wordlist with a pattern? [Y]es / [N]o > "))
+        if pattern == "N":
+            if os.system("crunch") == "Usage":
+                print(colored("{0}The maximum and minimum length should be the same size as the pattern you specified!!{0}", "red").format(enter))
 
-            min = int(input("Minimum of characters > "))
-            max = int(input("Maximum of characters > "))
-            characters = input("Characters > ")
-            pattern = input("Pattern (Example: a@@@@b) > ")
-            output = str(input("File Name > "))
+                min = int(input("Minimum of characters > "))
+                max = int(input("Maximum of characters > "))
+                characters = input("Characters > ")
+                pattern = input("Pattern (Example: a@@@@b) > ")
+                output = str(input("File Name (wordlist.txt) > "))
 
-            os.system("crunch {0} {1} {2} -o {3} -t {4}".format(min, max, characters, pattern, output))
-            print("Your new wordlist saved in {0}".format(output))
+                os.system("crunch {0} {1} {2} -o /root/Desktop{3} -t {4}".format(min, max, characters, output, pattern))
+                print("Your new wordlist saved in /root/Desktop{0}".format(output))
 
-        elif not os.system("crunch") == "Usage":
-            print("Installing Crunch{0}".format(enter))
+            elif not os.system("crunch") == "Usage":
+                print("Installing Crunch{0}".format(enter))
+                os.system("sudo apt-get update && sudo apt-get install -y crunch")
 
-            min = int(input("Minimum of characters > "))
-            max = int(input("Maximum of characters > "))
-            characters = input("Characters > ")
-            pattern = input("Pattern (Example: a@@@@b) > ")
-            output = str(input("File Name > "))
+                print(colored("{0}The maximum and minimum length should be the same size as the pattern you specified!!{0}", "red").format(enter))
 
-            os.system("crunch {0} {1} {2} -o {3} -t {4}".format(min, max, characters, pattern, output))
-            print("Your new wordlist saved in {0}".format(output))
+                min = int(input("Minimum of characters > "))
+                max = int(input("Maximum of characters > "))
+                characters = input("Characters > ")
+                pattern = input("Pattern (Example: a@@@@b) > ")
+                output = str(input("File Name (wordlist.txt) > "))
+
+                os.system("crunch {0} {1} {2} -o /root/Desktop/{3} -t {4}".format(min, max, characters, output, pattern))
+                print("Your new wordlist saved in /root/Desktop/{0}".format(output))
+
+        elif pattern == "Y":
+            if os.system("crunch") == "Usage":
+                print(colored("{0}The maximum and minimum length should be the same size as the pattern you specified!!{0}", "red").format(enter))
+
+                min = int(input("Minimum of characters > "))
+                max = int(input("Maximum of characters > "))
+                characters = input("Characters > ")
+                output = str(input("File Name (wordlist.txt) > "))
+
+                os.system("crunch {0} {1} {2} -o {3}".format(min, max, characters, output))
+                print("Your new wordlist saved in /root/Desktop/{0}".format(output))
 
 
 menu()
