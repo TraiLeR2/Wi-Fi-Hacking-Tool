@@ -193,7 +193,7 @@ Feel free to reach me on Telegram:
                 output = str(input("File Name (wordlist.txt) > "))
 
                 os.system("crunch {0} {1} {2} -o {3}".format(min, max, characters, output))
-                print("Your new wordlist saved in /root/Desktop/{0}".format(output))
+                print("{0}Your new wordlist saved in /root/Desktop/{1}".format(enter, output))
 
 
 menu()
