@@ -1,6 +1,6 @@
 import os
 import time
-from function import *
+from functions import *
 
 enter = "\n"
 
@@ -55,7 +55,7 @@ Feel free to reach me on Telegram:
         scan = "airodump-ng {0} -M".format(adapter)
         print("Press CTRL + C When you Finish the SCAN! *IMPORTANT* ")
         time.sleep(5)
-        scan1 = os.system(scan)
+        os.system(scan)
         time.sleep(5)
         menu()
 
