@@ -1,6 +1,6 @@
 import os
 import time
-from functions import *
+from functions import banner
 
 enter = "\n"
 
@@ -11,22 +11,22 @@ def menu():
                 *** The Script was Created By Idan Malihi ***{1}""".format(banner(), enter))
 
     print("""Menu:
-    1) Enable Monitor Mode
-    2) Disable Monitor Mode
-    3) Scan Networks
-    4) Getting Handshake
-    5) Update & Upgrade Machine
-    6) Install wireless tools (Type 5 before)
-    7) Crack Wi-Fi with rockyou.txt
-    0) About the Hacker
-    00) Exit""")
+    (1) Enable Monitor Mode
+    (2) Disable Monitor Mode
+    (3) Scan Networks
+    (4) Getting Handshake
+    (5) Update & Upgrade Machine
+    (6) Install wireless tools (Type 5 before)
+    (7) Crack Wi-Fi with rockyou.txt
+    (8) About the Hacker
+    (9) Exit""")
 
-    option = int(input("\nChoice > "))
+    option = int(input("{0}Choice > ".format(enter)))
 
-    if option == 00:
+    if option == 9:
         exit()
 
-    elif option == 0:
+    elif option == 8:
         print("""
 Hi, my name is Idan (TraiLeR) and I am an Ethical Hacker, Bug Bounty Hunter and Cyber Security Researcher.
 Since I was a child I loved challenges and do things that would open my mind and be more creative.
@@ -74,9 +74,7 @@ Feel free to reach me on Telegram:
         menu()
 
     elif option == 5:
-        os.system("sudo apt-get update")
-
-        os.system("sudo apt-get full-upgrade -y")
+        os.system("sudo apt-get update && sudo apt-get full-upgrade -y")
         menu()
 
     elif option == 6:
@@ -126,6 +124,19 @@ Feel free to reach me on Telegram:
         except:
             print("You did not type the right number on the list!")
 
-
+    elif option == 6:
+        if os.path.exists("/usr/share/wordlists/rockyou.txt"):
+            handshake = str(input("Enter the path of the handshake file > "))
+            print("{0}To exit Press CTRL +C".format(enter))
+            os.system("aircrack-ng {0} -w /usr/share/wordlists/rockyou.txt".format(handshake))
+            time.sleep(5)
+            exit()
+        elif not os.path.exists("/usr/share/wordlists/rockyou.txt"):
+            os.system("gzip -d /usr/share/wordlists/rockyou.txt.gz")
+            handshake = str(input("Enter the path of the handshake file > "))
+            print("{0}To exit Press CTRL +C".format(enter))
+            os.system("aircrack-ng {0} -w /usr/share/wordlists/rockyou.txt".format(handshake))
+            time.sleep(5)
+            exit()
 
 menu()
