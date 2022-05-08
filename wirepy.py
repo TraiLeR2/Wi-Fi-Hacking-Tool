@@ -155,13 +155,6 @@ Feel free to reach me on Telegram:
 
     elif option == 9:
         if os.system("crunch") == "Usage":
-            print("""Crunch can create a wordlist based on criteria you specify.
-            The output from crunch can be sent to the screen, file or another program.
-            
-            Usage: crunch <Min> <Max> <Characters> -t <Pattern> -o <FileName>
-            
-            Example:
-            crunch 6 8 123abc$ -o wordlist -t a@@@@b""")
 
             min = int(input("Minimum of characters > "))
             max = int(input("Maximum of characters > "))
@@ -174,14 +167,6 @@ Feel free to reach me on Telegram:
 
         elif not os.system("crunch") == "Usage":
             print("Installing Crunch{0}".format(enter))
-
-            print("""Crunch can create a wordlist based on criteria you specify.
-The output from crunch can be sent to the screen, file or another program.
-
-Usage: crunch <Min> <Max> <Characters> -t <Pattern> -o <FileName>
-
-Example:
-crunch 6 8 123abc$ -o wordlist -t a@@@@b""")
 
             min = int(input("Minimum of characters > "))
             max = int(input("Maximum of characters > "))
