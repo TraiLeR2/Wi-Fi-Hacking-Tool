@@ -1,7 +1,8 @@
 import pyfiglet
+from termcolor import colored
 
 enter = "\n"
 
 def banner():
-    banner = pyfiglet.figlet_format("WireAttack")
-    return banner
+    bannerr = pyfiglet.figlet_format("WireAttack")
+    print(colored("{0}".format(bannerr), "red"))
