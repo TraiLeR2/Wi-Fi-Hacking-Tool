@@ -1,8 +1,6 @@
 import pyfiglet
 import os
 
-enter = "\n"
-
 def banner():
     res = pyfiglet.figlet_format("WireAttack")
     return res
