@@ -10,7 +10,7 @@ def menu():
 
     print(colored(f"{banner()}", "red"))
 
-    print(f"*** The Script was Created By TraiLeR (Idan) ***{enter}")
+    print(colored(f"*** The Script was Created By TraiLeR (Idan) ***{enter}", "blue"))
 
     print("""Menu:
     (1) Enable Monitor Mode
@@ -88,7 +88,7 @@ Feel free to reach me on Telegram:
 
     elif option == 6:
         os.system("clear")
-        print("""
+        print(f"""Tools:{enter}
 (1) Aircrack-ng
 (2) Wifite
 (3) Kismet
@@ -135,7 +135,8 @@ Feel free to reach me on Telegram:
 
         else:
             print("You did not type the right number on the list!")
-
+            menu()
+        menu()
     elif option == 7:
         os.system("clear")
         if os.path.exists("/usr/share/wordlists/rockyou.txt"):
